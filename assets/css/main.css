@@ -3010,6 +3010,9 @@ input, select, textarea {
 	.features article .article-content {
 		display: flex; /* Use flexbox for article content */
 		flex-direction: row-reverse; /* Reverse the order of items in the row */
+		flex-wrap: wrap;
+		justify-content: space-around;
+		
 	}
 	
 	.features article:nth-child(odd) .article-content {
@@ -3017,21 +3020,27 @@ input, select, textarea {
 	}
 
 	.features article .image {
-		flex: 0 0 auto; /* Don't grow or shrink */
+		padding: 10px;
+		flex: 1 1 auto;
 		margin-right: 15px;
 		margin-bottom: 20px;
 	}
 	
 	.features article .image img {
 		border-radius: 5px 0 0 5px; /* Adjust border radius */
-		max-width: 100%; /* Ensure the image doesn't exceed the container width */
 		height: auto; /* Maintain aspect ratio */
+		width: 100%; /* Make image width 100% of its parent */
+		max-width: 100vw; /* Restrict image to the viewport width */
+		max-height: 100vh; /* Restrict image to the viewport height */
+		object-fit: contain; /* Ensures the image scales without being cropped */
 	}
 
 	.features article .text-content {
 		align-content: center;
 		padding-right: 50px; /* Add padding to create space between text and image */
 		padding-left: 50px; /* Add padding to create space between text and image */
+		flex-basis: 100%; /* Take full width for text content on smaller screens */
+		padding: 20px;
 	}
 
 		@media screen and (max-width: 980px) {
